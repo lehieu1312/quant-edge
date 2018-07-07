@@ -1,0 +1,73 @@
+<div id="body-content">
+    <mat-tab-group>
+        <mat-tab label="TOP GAINERS">
+            <table mat-table [dataSource]="dataSourceGainer" class="mat-elevation-z8">
+                <ng-container matColumnDef="code">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-left" width="13%"> Code</th>
+                    <td mat-cell *matCellDef="let element" class="code-transaction text-left"> {{element.code}} </td>
+                </ng-container>
+                <ng-container matColumnDef="company">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-left" width="18%"> Company </th>
+                    <td mat-cell *matCellDef="let element" class="company-transaction text-left"> {{element.company | uppercase}} </td>
+                </ng-container>
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> Price </th>
+                    <td mat-cell *matCellDef="let element" class="value-transaction text-right"> {{element.price |number:'1.2-2'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> Value </th>
+                    <td mat-cell *matCellDef="let element" class="value-transaction text-right"> {{element.price*element.volume |number:'1.0-0' }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="change">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> Change </th>
+                    <td mat-cell *matCellDef="let element" class="text-right" [ngClass]="element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''"> {{element.change==0?'--':element.change |number:'1.2-2' }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="%change">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> %Change </th>
+                    <td mat-cell *matCellDef="let element" class="text-right" [ngClass]="element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''"> {{ element.perChange==0?'0': element.perChange |number:'1.2-2' }} {{element.perChange==0?'':'%'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-tab>
+
+
+        <mat-tab label="TOP LOSERS">
+            <table mat-table [dataSource]="dataSourceLoser" class="mat-elevation-z8">
+                <ng-container matColumnDef="code">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-left" width="13%"> Code</th>
+                    <td mat-cell *matCellDef="let element" class="code-transaction text-left"> {{element.code}} </td>
+                </ng-container>
+                <ng-container matColumnDef="company">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-left" width="18%"> Company </th>
+                    <td mat-cell *matCellDef="let element" class="company-transaction text-left"> {{element.company | uppercase}} </td>
+                </ng-container>
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> Price </th>
+                    <td mat-cell *matCellDef="let element" class="value-transaction text-right"> {{element.price |number:'1.2-2'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> Value </th>
+                    <td mat-cell *matCellDef="let element" class="value-transaction text-right"> {{element.price*element.volume |number:'1.0-0' }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="change">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> Change </th>
+                    <td mat-cell *matCellDef="let element" class="text-right" [ngClass]="element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''"> {{element.change==0?'--':element.change |number:'1.2-2' }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="%change">
+                    <th mat-header-cell *matHeaderCellDef class="color-header text-right" width="15%"> %Change </th>
+                    <td mat-cell *matCellDef="let element" class="text-right" [ngClass]="element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''"> {{ element.perChange==0?'0': element.perChange |number:'1.2-2' }} {{element.perChange==0?'':'%'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

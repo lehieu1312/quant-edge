@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+}
+
+td {
+    border-bottom-color: rgba(0, 0, 0, .12);
+}
+
+#body-content {
+    width: 690px;
+    height: auto;
+    margin: 0 auto;
+    border-right: 8px solid #3a38381f;
+    border-left: 8px solid #3a38381f;
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.color-header {
+    color: #cbcbcb;
+    font-weight: 500;
+    font-size: 13px;
+    border-bottom-color: rgba(0, 0, 0, .12);
+}
+
+.code-transaction {
+    color: #0971d8;
+}
+
+.company-transaction {
+    color: #a1a1a1;
+}
+
+.value-transaction {
+    color: #141414;
+}
+
+.font-color-green {
+    color: #6ae5a2;
+}
+
+.font-color-red {
+    color: #ff6687;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+app-tabs {
+    width: 300px;
+}
