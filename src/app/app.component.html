@@ -1,5 +1,6 @@
 <div id="body-content">
     <mat-tab-group>
+        <!-- Tab Top 20 bản ghi có value lớn nhất -->
         <mat-tab label="TOP GAINERS">
             <table mat-table [dataSource]="dataSourceGainer" class="mat-elevation-z8">
                 <ng-container matColumnDef="code">
@@ -33,8 +34,9 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </mat-tab>
+        <!-- Close tab Gainers -->
 
-
+        <!-- Tab Top 20 bản ghi có value nhỏ nhất -->
         <mat-tab label="TOP LOSERS">
             <table mat-table [dataSource]="dataSourceLoser" class="mat-elevation-z8">
                 <ng-container matColumnDef="code">
@@ -68,6 +70,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </mat-tab>
+        <!-- Close tab Losers -->
     </mat-tab-group>
 
 </div>

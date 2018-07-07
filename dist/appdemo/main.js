@@ -41,7 +41,7 @@ module.exports = "table {\r\n    width: 100%;\r\n}\r\n\r\ntd {\r\n    border-bot
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"body-content\">\r\n    <mat-tab-group>\r\n        <mat-tab label=\"TOP GAINERS\">\r\n            <table mat-table [dataSource]=\"dataSourceGainer\" class=\"mat-elevation-z8\">\r\n                <ng-container matColumnDef=\"code\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"13%\"> Code</th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"code-transaction text-left\"> {{element.code}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"company\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"18%\"> Company </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"company-transaction text-left\"> {{element.company | uppercase}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"price\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Price </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price |number:'1.2-2'}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"value\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Value </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price*element.volume |number:'1.0-0' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{element.change==0?'--':element.change |number:'1.2-2' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"%change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> %Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{ element.perChange==0?'0': element.perChange |number:'1.2-2' }} {{element.perChange==0?'':'%'}}</td>\r\n                </ng-container>\r\n\r\n                <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n            </table>\r\n        </mat-tab>\r\n\r\n\r\n        <mat-tab label=\"TOP LOSERS\">\r\n            <table mat-table [dataSource]=\"dataSourceLoser\" class=\"mat-elevation-z8\">\r\n                <ng-container matColumnDef=\"code\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"13%\"> Code</th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"code-transaction text-left\"> {{element.code}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"company\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"18%\"> Company </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"company-transaction text-left\"> {{element.company | uppercase}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"price\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Price </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price |number:'1.2-2'}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"value\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Value </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price*element.volume |number:'1.0-0' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{element.change==0?'--':element.change |number:'1.2-2' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"%change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> %Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{ element.perChange==0?'0': element.perChange |number:'1.2-2' }} {{element.perChange==0?'':'%'}}</td>\r\n                </ng-container>\r\n\r\n                <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n            </table>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n\r\n</div>"
+module.exports = "<div id=\"body-content\">\r\n    <mat-tab-group>\r\n        <!-- Tab Top 20 bản ghi có value lớn nhất -->\r\n        <mat-tab label=\"TOP GAINERS\">\r\n            <table mat-table [dataSource]=\"dataSourceGainer\" class=\"mat-elevation-z8\">\r\n                <ng-container matColumnDef=\"code\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"13%\"> Code</th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"code-transaction text-left\"> {{element.code}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"company\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"18%\"> Company </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"company-transaction text-left\"> {{element.company | uppercase}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"price\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Price </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price |number:'1.2-2'}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"value\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Value </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price*element.volume |number:'1.0-0' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{element.change==0?'--':element.change |number:'1.2-2' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"%change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> %Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{ element.perChange==0?'0': element.perChange |number:'1.2-2' }} {{element.perChange==0?'':'%'}}</td>\r\n                </ng-container>\r\n\r\n                <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n            </table>\r\n        </mat-tab>\r\n        <!-- Close tab Gainers -->\r\n\r\n        <!-- Tab Top 20 bản ghi có value nhỏ nhất -->\r\n        <mat-tab label=\"TOP LOSERS\">\r\n            <table mat-table [dataSource]=\"dataSourceLoser\" class=\"mat-elevation-z8\">\r\n                <ng-container matColumnDef=\"code\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"13%\"> Code</th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"code-transaction text-left\"> {{element.code}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"company\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-left\" width=\"18%\"> Company </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"company-transaction text-left\"> {{element.company | uppercase}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"price\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Price </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price |number:'1.2-2'}} </td>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"value\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Value </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"value-transaction text-right\"> {{element.price*element.volume |number:'1.0-0' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{element.change==0?'--':element.change |number:'1.2-2' }} </td>\r\n                </ng-container>\r\n\r\n                <ng-container matColumnDef=\"%change\">\r\n                    <th mat-header-cell *matHeaderCellDef class=\"color-header text-right\" width=\"15%\"> %Change </th>\r\n                    <td mat-cell *matCellDef=\"let element\" class=\"text-right\" [ngClass]=\"element.statusUp>0 ? 'font-color-green' : element.statusUp<0 ?'font-color-red':''\"> {{ element.perChange==0?'0': element.perChange |number:'1.2-2' }} {{element.perChange==0?'':'%'}}</td>\r\n                </ng-container>\r\n\r\n                <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n            </table>\r\n        </mat-tab>\r\n        <!-- Close tab Losers -->\r\n    </mat-tab-group>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -73,13 +73,20 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.api = api;
         this.title = 'App demo';
+        // Định danh các cột cho table
         this.displayedColumns = ['code', 'company', 'price', 'value', 'change', '%change'];
+        // Lấy dữ liệu và xử lý dữ liệu từ api trả về
         this.api.getData().subscribe(function (res) {
             _this.data = res.dataTransaction;
+            // Sắp xếp ghi có value = price*volume lớn nhất
             _this.dataSourceGainer = _this.data.sort(function (a, b) { return a.price * a.volume > b.price * b.volume ? -1 : 1; });
+            // Lấy 20 bản ghi có value lớn nhất
             _this.dataSourceGainer = _this.dataSourceGainer.slice(0, 20);
+            // Sắp xếp  bản ghi có value = price*volume nhỏ nhất
             _this.dataSourceLoser = _this.data.sort(function (a, b) { return a.price * a.volume > b.price * b.volume ? 1 : -1; });
+            // Lấy 20 bản ghi có value nhỏ nhất
             _this.dataSourceLoser = _this.dataSourceLoser.slice(0, 20);
+            // Hàm set thời gian sau 5s sẽ tự động thay đổi giá và volume để hiện thị lên table
             setInterval(function () {
                 _this.mathData();
             }, 5000);
@@ -87,19 +94,26 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
     };
+    // Hàm lấy ngẫu nhiên giá trong khoảng từ -5% -> +5% của giá hiện tại
     AppComponent.prototype.randomPrice = function (fPrice) {
         var fivePercent = 5 * fPrice / 100;
         var vValue = Math.random() * (fivePercent - (-fivePercent)) + (-fivePercent);
         return vValue;
     };
+    // Hàm thay đổi giá và khối lượng, sau đó sẽ tính lại giá thay đổi và % giá đã thay đổi cũng như value của các bản ghi
     AppComponent.prototype.mathData = function () {
         for (var i = 0; i < this.data.length; i++) {
+            // Tăng volume ngẫu nhiên trong khoảng từ 10->30
             this.data[i].volume = this.data[i].volume + Math.random() * (30 - 10) + 10;
+            // Thay đổi giá từ hàm cho trước
             var priceChange = this.randomPrice(this.data[i].price);
             this.data[i].price = this.data[i].price + priceChange;
+            // Tính giá thay đổi so với giá tham chiếu ban đầu
             var differencePrice = this.data[i].price - this.data[i].referPrice;
             this.data[i].change = differencePrice;
+            // Tính phần trăm giá thay đổi so với giá tham chiếu ban đầu
             this.data[i].perChange = differencePrice * 100 / this.data[i].referPrice;
+            // Check trạng thái của bản ghi thay đổi theo chiều tăng, giảm hoặc không
             if (differencePrice < 0) {
                 this.data[i].statusUp = -1;
             }
@@ -110,9 +124,13 @@ var AppComponent = /** @class */ (function () {
                 this.data[i].statusUp = 0;
             }
         }
+        // Sắp xếp các bản ghi giảm dần sau khi dữ liệu thay đổi
         this.dataSourceGainer = this.data.sort(function (a, b) { return a.price * a.volume > b.price * b.volume ? -1 : 1; });
+        // Lấy top 20 bản ghi có value cao nhất
         this.dataSourceGainer = this.dataSourceGainer.slice(0, 20);
+        // Sắp xếp các bản ghi tăng dần sau khi dữ liệu thay đổi
         this.dataSourceLoser = this.data.sort(function (a, b) { return a.price * a.volume > b.price * b.volume ? 1 : -1; });
+        // Lấy top 20 bản ghi có value nhỏ nhất
         this.dataSourceLoser = this.dataSourceLoser.slice(0, 20);
     };
     AppComponent = __decorate([
@@ -294,7 +312,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\LearnData\Nodejs\MeanJS\appdemo\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\LearnData\Nodejs\MeanJS\quant-edge\src\main.ts */"./src/main.ts");
 
 
 /***/ })
