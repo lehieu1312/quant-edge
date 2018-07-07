@@ -1,4 +1,4 @@
-#quant-edge test
+# quant-edge test
 Mở terminal từ đường dẫn project chạy:
 
 **npm install**
