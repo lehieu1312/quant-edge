@@ -11,6 +11,7 @@ const apiUrl = '/api';
 export class DataService {
   result: any;
   constructor(private http: Http) { }
+  // Hàm lấy dữ liệu và xử lý dữ liệu từ api server nodejs
   getData(): Observable<any> {
     return this.http.get(apiUrl).pipe(map(result => this.result = result.json()));
   }
