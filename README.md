@@ -2,11 +2,11 @@
 Mở terminal từ đường dẫn project chạy:
 
 **npm install**
-<br/>
+#
 **npm start**
-<br/>
+#
 Sau đó, từ cửa sổ trình duyệt truy cập:
-<br/>
+#
 **localhost:3000**
 
 Mô tả:
